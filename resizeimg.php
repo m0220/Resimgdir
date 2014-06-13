@@ -3,8 +3,8 @@
 ini_set('max_execution_time', 0);
 
 //Initial settings, Just specify Source and Destination Image folder.
-$ImagesDirectory    = '/var/www/arrow.dharma/resimgdir/img/'; //Source Image Directory End with Slash
-$DestImagesDirectory    = '/var/www/arrow.dharma/resimgdir/new/'; //Destination Image Directory End with Slash
+$ImagesDirectory    = '/percorsoinput/img/'; //Source Image Directory End with Slash
+$DestImagesDirectory    = '/percorsooutput/new/'; //Destination Image Directory End with Slash
 $NewImageWidth      = 500; //New Width of Image
 $NewImageHeight     = 500; // New Height of Image
 $Quality        = 80; //Image Quality
@@ -21,7 +21,7 @@ if($dir = opendir($ImagesDirectory)){
 	echo "<BR>";
 	echo "Image height " .$height;
 	echo "<BR>";
-        if(file_exists($imagePath) && $checkValidImage && ($width > $NewImageWidth)) //Continue only if 2 given parameters are true
+        if(file_exists($imagePath) && $checkValidImage && ($width > $NewImageWidth)) //Continue only if 3 given parameters are true, the third is the discrimination if the image is more sized than the resize value (width)
         {
             //Image looks valid, resize.
             if(resizeImage($imagePath,$destPath,$NewImageWidth,$NewImageHeight,$Quality))
